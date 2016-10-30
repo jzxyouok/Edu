@@ -1,4 +1,4 @@
-ThinkPHP 5.0
+Edu 在线教育网站
 ===============
 
 [![Total Downloads](https://poser.pugx.org/topthink/think/downloads)](https://packagist.org/packages/topthink/think)
