@@ -7,34 +7,32 @@
  * Time: 17:38
  */
 
-namespace app\security\controller;
+namespace app\tsecurity\controller;
 
 
 use think\Controller;
 use think\Request;
 use think\Url;
 
-require_once(APP_PATH."/security/common.php");
-
-define("LOGIN_SESSION_KEY", "security_login_session_key");
+require_once(APP_PATH."/tsecurity/common.php");
 
 
 class SecurityController extends Controller
 {
 
-
     // 初始化
     protected function _initialize()
     {
-        $config = config("security");
+        $config = require_once(APP_PATH."/tsecurity/security_config.php");
+        $config = $config["security"];
 
         //获取pathinfo
         $request = Request::instance();
-        $pathinfo = "/" . $request->pathinfo();
+        $pathinfo = $request->pathinfo();
 
 
-        $filter_chain = require(APP_PATH."/security/security_config.php");
-        $goon = 1;
+        $filter_chain = $config["filter_chain"];
+        $goon = 2;
 
         if(!$filter_chain){
             return;
@@ -44,7 +42,12 @@ class SecurityController extends Controller
             if(startWith($key, "~")){
                 $key = substr($key, 1);
                 if(preg_match($pathinfo, $key)){
-                    $goon = checkPerms($value);
+                    $isPermed = checkPerms($value);
+                    if($goon == 2){
+                        $goon = $isPermed;
+                    }elseif($goon != 1){
+                        $goon = $isPermed;
+                    }
                 }
             }elseif (startWith($key, "=")){
                 $key = substr($key, 1);
@@ -61,7 +64,7 @@ class SecurityController extends Controller
 
         switch ($goon){
             case 0:
-                $this->error($config["login_fail"], Url::build("/security/login/index"));
+                $this->error($config["login_fail"], Url::build($config["login_url"]));
                 break;
             case -1:
                 $this->error($config["not_permed"]);

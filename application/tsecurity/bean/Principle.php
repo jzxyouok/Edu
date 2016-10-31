@@ -6,7 +6,7 @@
  * Time: 19:26
  */
 
-namespace app\security\bean;
+namespace app\tsecurity\bean;
 
 
 class Principle

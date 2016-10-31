@@ -9,9 +9,13 @@
 
 namespace app\index\model;
 
-use \think\Model;
+use app\tsecurity\bean\InnerUser;
 
-class User extends Model
+class User extends InnerUser
 {
+
+    public function role(){
+        return $this->belongsTo("Role");
+    }
 
 }

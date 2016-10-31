@@ -9,9 +9,13 @@
 
 namespace app\index\model;
 
-use \think\Model;
+use app\tsecurity\bean\InnerRole;
 
-class Role extends Model
+class Role extends InnerRole
 {
+
+    public function user(){
+        return $this->hasMany("User");
+    }
 
 }

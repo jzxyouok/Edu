@@ -1,7 +1,7 @@
 <?php
 namespace app\index\controller;
 
-use app\security\controller\SecurityController;
+use app\tsecurity\controller\SecurityController;
 
 class Index extends SecurityController
 {
