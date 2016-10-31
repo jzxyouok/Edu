@@ -1,5 +1,7 @@
 <?php
-use app\security\exception\PermsError;
+use app\tsecurity\exception\PermsError;
+
+$security_config = require_once(APP_PATH . "/tsecurity/security_config.php");
 
 /**
  * Created by PhpStorm.
@@ -21,7 +23,7 @@ function startWith($str, $needle) {
  * @throws PermsError
  */
 function checkPerms($filter){
-    $principle = session(LOGIN_SESSION_KEY);
+    $principle = getLoginPrinciple();
 
     if(is_array($filter)){
         if(!$principle || !$principle->perms){
@@ -47,4 +49,11 @@ function checkPerms($filter){
         throw new PermsError("filterchain 权限格式有误");
     }
     return -1;
+}
+/**
+ * 获取登录信息
+ */
+function getLoginPrinciple(){
+    global $security_config;
+    return session($security_config["login_session_key"]);
 }

@@ -6,14 +6,12 @@
  * Time: 20:15
  */
 
-namespace app\security\model;
+namespace app\tsecurity\bean;
 
 
 use think\Model;
 
-class Inner_User extends Model
+class InnerUser extends Model
 {
-    public $username;
-    public $password;
 
 }

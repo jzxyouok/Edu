@@ -6,7 +6,7 @@
  * Time: 18:49
  */
 
-namespace app\security\exception;
+namespace app\tsecurity\exception;
 
 
 class PermsError extends \Exception

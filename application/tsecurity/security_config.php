@@ -3,8 +3,10 @@ return [
 
     //安全设置
     "security"                  =>[
-        //登录成功的跳转地址
-        'login_success'     => '',
+        //登录页面地址
+        'login_url'     => 'index/login/index',
+        //登录成功的跳转地址 只需要pathinfo
+        'login_success'     => 'index/index/index',
         //登录失败的提示信息
         'login_fail'     => '您尚未登录，请先登录',
         //无权限的提示
@@ -12,7 +14,7 @@ return [
         //用户表
         'user_table' => [
             //Model完全限定名
-            'name' => '\app\security\model\User',
+            'name' => '\app\index\model\User',
             //用户名字段
             'username' => 'username',
             //密码字段
@@ -24,7 +26,7 @@ return [
         //角色表的表名(无前缀)
         'role_table' =>[
             //Model完全限定名
-            'name' => '\app\security\model\Role',
+            'name' => '\app\index\model\Role',
             //权限字段
             'perms' => 'perms'
 
@@ -39,6 +41,7 @@ return [
             "=/" => "authn",
 
         ],
+        "login_session_key" => 'security_login_session_key',
     ],
 
 ];
