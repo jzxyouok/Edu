@@ -16,14 +16,21 @@ class Turing extends Controller
 {
     public function talk($message)
     {
-        $res = turingGet($message, null);
-        if ($res["code"] == 40007) {
+        $res = turingGet($message, "北京市中关村");
+        switch ($res->code) {
+            case 100000:
+                return json($this->ret_json($res->code, $res->text));
+            case 200000:
+                return json($this->ret_json($res->code, "已经为您找到了: <a href=\"".$res->text."\" target='_blank' >点我</a>"));
+            case 302000:
+                return json($this->ret_json($res->code, "这里是今天最新的新闻哦: <a href=\"".$res->text."\" target='_blank' >点我</a>"));
+            case 308000:
+                return json($this->ret_json($res->code, "您要的菜谱，拿好: <a href=\"".$res->text."\" target='_blank' >点我</a>"));
         }
-        return $res;
     }
 
     private function ret_json($code, $content)
     {
-        return json_encode(["code" => $code, "content" => $content]);
+        return ["code" => $code, "content" => $content];
     }
 }
