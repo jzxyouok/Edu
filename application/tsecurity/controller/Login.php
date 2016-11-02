@@ -13,6 +13,7 @@ use app\tsecurity\bean\Principle;
 use think\Controller;
 use think\Url;
 
+require_once(APP_PATH."tsecurity/common.php");
 /**
  * 安全框架登陆控制器
  * Class Login
@@ -26,7 +27,7 @@ class Login extends Controller
      * @param $password
      */
     public function to_login($username, $password){
-        $config = $this->getConfig()["security"];
+        $config = getConfig();
         $user_table = $config["user_table"];
         $user = new $user_table["name"]();
         $find_user = $user->where($user_table["username"], "eq", $username)->find();
@@ -43,11 +44,4 @@ class Login extends Controller
         $this->success("登录成功!",Url::build( $config["login_success"]));
     }
 
-    /**
-     * 获取安全配置
-     * @return array
-     */
-    private function getConfig(){
-        return require_once(APP_PATH."/tsecurity/security_config.php");
-    }
 }

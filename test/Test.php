@@ -6,7 +6,5 @@
  * Date: 2016/10/31
  * Time: 11:02
  */
-session_start();
-
-echo session_id();
-
+echo null && "1";
+echo null || "1";

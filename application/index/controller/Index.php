@@ -7,6 +7,9 @@ class Index extends SecurityController
 {
     public function index()
     {
+        $user = $this->getLoginUser();
+        dump($user);
+        $this->assign("user",$user);
         return view();
     }
 }

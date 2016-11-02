@@ -23,9 +23,7 @@ class SecurityController extends Controller
     // 初始化
     protected function _initialize()
     {
-        $config = require_once(APP_PATH."/tsecurity/security_config.php");
-        $config = $config["security"];
-
+        $config = getConfig();
         //获取pathinfo
         $request = Request::instance();
         $pathinfo = $request->pathinfo();
@@ -71,6 +69,18 @@ class SecurityController extends Controller
                 break;
         }
 
+    }
+
+    /**
+     * 获取当前登录用户
+     */
+    protected function getLoginUser(){
+        $config = getConfig();
+        $principle = getLoginPrinciple();
+        if($principle){
+            $user = new $config["user_table"]["name"];
+            return $user->where("username", $principle->username)->find();
+        }
     }
 
 

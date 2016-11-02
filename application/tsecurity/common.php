@@ -1,8 +1,6 @@
 <?php
 use app\tsecurity\exception\PermsError;
 
-$security_config = require_once(APP_PATH . "/tsecurity/security_config.php");
-
 /**
  * Created by PhpStorm.
  * User: wencheng
@@ -51,9 +49,20 @@ function checkPerms($filter){
     return -1;
 }
 /**
+ * 获取安全配置
+ * @return array
+ */
+function getConfig(){
+    \think\Config::parse(APP_PATH."/tsecurity/security_config.php");
+    return config("security");
+}
+
+/**
  * 获取登录信息
  */
 function getLoginPrinciple(){
-    global $security_config;
+    $security_config = getConfig();
+    echo session($security_config["login_session_key"]);
+    dump($security_config);
     return session($security_config["login_session_key"]);
 }
