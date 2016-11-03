@@ -53,7 +53,7 @@ function checkPerms($filter){
  * @return array
  */
 function getConfig(){
-    \think\Config::parse(APP_PATH."/tsecurity/security_config.php");
+    \think\Config::load(APP_PATH."/tsecurity/security_config.php");
     return config("security");
 }
 
@@ -62,7 +62,5 @@ function getConfig(){
  */
 function getLoginPrinciple(){
     $security_config = getConfig();
-    echo session($security_config["login_session_key"]);
-    dump($security_config);
     return session($security_config["login_session_key"]);
 }

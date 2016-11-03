@@ -11,10 +11,11 @@
  * @param $message
  * @return array 获取图灵回复
  */
-function turingGet($message, $location){
+function turingGet($message, $location)
+{
     session_start();
     $config = config("turing");
-    $data = ["key"=>$config["apikey"], "info"=>$message,  "userid"=>session_id()];
+    $data = ["key" => $config["apikey"], "info" => $message, "loc" => $location, "userid" => session_id()];
     $dataString = json_encode($data);
 
     $handle = curl_init("http://www.tuling123.com/openapi/api");
