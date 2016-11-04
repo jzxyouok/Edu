@@ -7,6 +7,7 @@
  */
 
 namespace app\turing\controller;
+use app\turing\model\Poem;
 use think\Controller;
 
 require_once(APP_PATH . "/turing/common.php");
