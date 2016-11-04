@@ -7,7 +7,6 @@
  */
 
 namespace app\turing\controller;
-
 use think\Controller;
 
 require_once(APP_PATH . "/turing/common.php");
@@ -16,7 +15,8 @@ class Turing extends Controller
 {
     public function talk($message)
     {
-        $res = turingGet($message, "北京市中关村");
+
+        $res = turingGet($message, ip2location($_SERVER["REMOTE_ADDR"]));
         switch ($res->code) {
             case 100000:
                 return json($this->ret_json($res->code, $res->text));
