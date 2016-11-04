@@ -1,92 +1,45 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-	<title>响应式 - by developer.cn.com </title>
-	<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">    
-    <link rel="stylesheet" type="text/css" href="css/style.css">    
-    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
-</head>
-<body>
+{extend name="./base.html"}
+{block name="title"}
+<title>响应式 - by developer.cn.com </title>
+{/block}
+{block name="header"}
+    <link rel="stylesheet" type="text/css" href="{$Think.BASE}/resources/csschat/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{$Think.BASE}/resources/csschat/style.css">
+    <link rel="stylesheet" type="text/css" href="{$Think.BASE}/resources/csschat/jquery.mobile.flatui.css" />
+{/}
+{block name="content"}
 <div data-role="page">
-	<div data-role="header" class="header linear-g">
-        <a href="#panel-left" data-iconpos="notext" class="glyphicon glyphicon-th-large col-xs-2 text-right"> </a>
-        <a class="text-center col-xs-8">developer.cn.com</a>
-        <a href="#panel-right" data-iconpos="notext" class="glyphicon glyphicon-user col-xs-2 text-left"> </a>
-    </div>
-    <div data-role="panel" data-position="left" data-display="push" class="list-group shortcut_menu dn linear-g" id="panel-left">
-        <a href="#" class="list-group-item"><span class="glyphicon glyphicon-home"> </span> &nbsp;菜单1</a>
-        <a href="#" class="list-group-item"><span class="glyphicon glyphicon-edit"> </span> &nbsp;菜单2</a>
-        <a href="#" class="list-group-item"><span class="glyphicon glyphicon-list"> </span> &nbsp;菜单3</a>
-        <a href="#" class="list-group-item"><span class="glyphicon glyphicon-list-alt"> </span> &nbsp;菜单4</a>
-    </div>
-    <div data-role="panel" data-position="right" data-display="push" class="user_box text-center dn linear-g" id="panel-right">
-        <div class="u_info">
-            <img class="avatar" src="images/avatar.png" alt="头像">
-            <span class="username">developer</span>
-        </div>
-        <ul class="user_menu">
-          <li class="menu"><a href="#"><span class="glyphicon glyphicon-cog"> </span> &nbsp;基本设置</a></li>
-          <li class="menu"><a href="#"><span class="glyphicon glyphicon-lock"> </span> &nbsp;修改密码</a></li>
-          <li class="menu"><a href="#"><span class="glyphicon glyphicon-picture"> </span> &nbsp;上传头像</a></li>
-          <li class="menu"><a href="#"><span class="glyphicon glyphicon-off"> </span> &nbsp;安全退出</a></li>
-        </ul>
-    </div>
     <div data-role="content" class="container" role="main">
         <ul class="content-reply-box mg10">
-            <li class="odd">
-                <a class="user" href="#"><img class="img-responsive avatar_" src="images/avatar-1.png" alt=""><span class="user-name">奔波儿灞</span></a>
-                <div class="reply-content-box">
-                	<span class="reply-time">03-08 15：00</span>
-                    <div class="reply-content pr">
-                    	<span class="arrow">&nbsp;</span>
-                    	为什么小鑫的名字里有三个金呢？
-                    </div>
-                </div>
-            </li>
-            <li class="even">
-                <a class="user" href="#"><img class="img-responsive avatar_" src="images/avatar-1.png" alt=""><span class="user-name">灞波儿奔</span></a>
-                <div class="reply-content-box">
-                	<span class="reply-time">03-08 15：10</span>
-                    <div class="reply-content pr">
-                    	<span class="arrow">&nbsp;</span>
-                    	他命里缺金，所以取名叫鑫，有些人命里缺水，就取名叫淼，还有些人命里缺木就叫森。
-                    </div>
-                </div>
-            </li>
-            <li class="odd">
-                <a class="user" href="#"><img class="img-responsive avatar_" src="images/avatar-1.png" alt=""><span class="user-name">奔波儿灞</span></a>
-                <div class="reply-content-box">
-                	<span class="reply-time">03-08 15：20</span>
-                    <div class="reply-content pr">
-                    	<span class="arrow">&nbsp;</span>
-                    	那郭晶晶命里缺什么？
-                    </div>
-                </div>
-            </li>
-            <li class="even">
-                <a class="user" href="#"><img class="img-responsive avatar_" src="images/avatar-1.png" alt=""><span class="user-name">灞波儿奔</span></a>
-                <div class="reply-content-box">
-                	<span class="reply-time">03-08 15：30</span>
-                    <div class="reply-content pr">
-                    	<span class="arrow">&nbsp;</span>
-                    	此处省略一百字...
-                    </div>
-                </div>
-            </li>
+
+
         </ul>
         <ul class="operating row text-center linear-g">
-        	<li class="col-xs-4"><a href="#"><span class="glyphicon glyphicon-tags"></span> &nbsp;标签</a></li>
-        	<li class="col-xs-4"><a href="#"><span class="glyphicon glyphicon-comment"></span> &nbsp;回复</a></li>
-        	<li class="col-xs-4"><a href="#"><span class="glyphicon glyphicon-heart"></span> &nbsp;喜欢</a></li>
+            <textarea name="" id="question" cols="30" rows="10"></textarea><button id="submit" onclick="submit()">提交</button>
         </ul>
     </div>
 </div>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.mobile-1.4.0-rc.1.js"></script>
+<script type="text/javascript" src="{$Think.BASE}/resources/js/jquery.min.js"></script>
+<script type="text/javascript" src="{$Think.BASE}/resources/js/jquery.mobile-1.4.0-rc.1.js"></script>
 <script type="text/javascript">
+    Date.prototype.Format = function(fmt)
+    { //author: meizz
+        var o = {
+            "M+" : this.getMonth()+1,                 //月份
+            "d+" : this.getDate(),                    //日
+            "h+" : this.getHours(),                   //小时
+            "m+" : this.getMinutes(),                 //分
+            "s+" : this.getSeconds(),                 //秒
+            "q+" : Math.floor((this.getMonth()+3)/3), //季度
+            "S"  : this.getMilliseconds()             //毫秒
+        };
+        if(/(y+)/.test(fmt))
+            fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+        for(var k in o)
+            if(new RegExp("("+ k +")").test(fmt))
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+        return fmt;
+    }
 	$(function(){
 		/* 
 		** 不同页面切换转场效果
@@ -98,7 +51,39 @@
 				reverse : true       //默认为false,设置为true时将导致一个反方向的转场
 			});	
 		});
-	});
+            $("#question").keydown(function(e){
+                var curKey = e.which;
+                if(curKey == 13){
+                    submit();
+                    return false;
+                }
+            });
+    });
+    function ask(question){
+        var div = document.getElementsByClassName("content-reply-box")[0];
+        var content = document.createElement("div");
+        content.innerHTML = '<li class="even"><a class="user" href="#"><img class="img-responsive avatar_" src="{$Think.BASE}/resources/images/avatar-1.png" alt=""><span class="user-name">{$user.nickname}</span></a> <div class="reply-content-box"> <span class="reply-time">'+new Date().Format("hh:mm:ss")+'</span> <div class="reply-content pr"> <span class="arrow">&nbsp;</span>'+question+'</div> </div> </li>';
+        div.appendChild(content);
+    }
+    function answer(answer){
+        var div = document.getElementsByClassName("content-reply-box")[0];
+        var content = document.createElement("div");
+        content.innerHTML = '<li class="odd"><a class="user" href="#"><img class="img-responsive avatar_" src="{$Think.BASE}/resources/images/avatar-1.png" alt=""><span class="user-name">图图老师</span></a> <div class="reply-content-box"> <span class="reply-time">'+new Date().Format("hh:mm:ss")+'</span> <div class="reply-content pr"> <span class="arrow">&nbsp;</span>'+answer+'</div> </div> </li>';
+        div.appendChild(content);
+    }
+    function submit(){
+        ask($("#question").val());
+        $.ajax({
+            type: "POST",
+            url: "{$Think.BASE}/public/index.php/turing/turing/talk",
+            data: {"message": $("#question").val()},
+            dataType:"json",
+            success: function(data){
+                $("#question").val("")
+                answer(data.content);
+            }
+        });
+    }
+
 </script>
-</body>
-</html>
+{/block}

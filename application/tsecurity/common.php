@@ -40,7 +40,7 @@ function checkPerms($filter){
                 return 0;
             }
         }elseif($filter == "authn"){
-            return true;
+            return 1;
         }
 
     }else{
