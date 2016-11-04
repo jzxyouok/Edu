@@ -29,4 +29,13 @@ function turingGet($message, $location)
     return json_decode($response);
 }
 
-
+function ip2location($ip){
+    $location = @file_get_contents("http://ip.taobao.com/service/getIpInfo.php?ip=".$ip);
+    $locarr = json_decode($location, true)["data"];
+    try{
+        $locastr = $locarr["country"].$locarr["area"].$locarr["region"].$locarr["city"];
+    }catch (Exception $e){
+        $locastr = "";
+    }
+    return $locastr;
+}
