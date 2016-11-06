@@ -25,7 +25,7 @@ li{list-style:none;}
 .reply-time{color:#e1912d;font-size:.85em;display:inline-block;width:100%;}
 .content-reply-box li.odd .reply-time{text-align:left;}
 .content-reply-box li.even .reply-time{text-align:right;}
-.reply-content{border:1px solid #fcfcfc;padding:.6em;background-color:#fcfcfc;border-radius:4px;box-shadow:0 0 5px #ccc;}
+.reply-content{border:1px solid #fcfcfc;padding:.6em; background: #e2f3ff; border-radius:4px;}
 .content-reply-box li.odd .arrow{width:0;height:0;line-height:0;font-size:0;border-color:transparent #fff transparent transparent;border-width:6px;border-style:dashed solid dashed dashed;display:block;position:absolute;top:8px;left:-12px;z-index:999;}
 .content-reply-box li.even .arrow{width:0;height:0;line-height:0;font-size:0;border-color:transparent transparent transparent #fff;border-width:6px;border-style:dashed dashed dashed solid;display:block;position:absolute;top:8px;right:-12px;z-index:999;}
 .operating{border-top:1px solid #ccc;}
@@ -35,3 +35,30 @@ li{list-style:none;}
 .oh{overflow:hidden;}
 .mg10 {margin:10px 0;}
 .linear-g{background: -moz-linear-gradient(top, #fdfdfd, #f6f6f6);background: -webkit-gradient(linear,top,from(#fdfdfd),to(#f6f6f6));background: -webkit-linear-gradient(top, #fdfdfd, #f6f6f6);background: -o-linear-gradient(top, #fdfdfd, #f6f6f6);box-shadow:0 0 5px #ccc;}
+.chat_container{
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    background: #fff;
+    width: 80%;
+    height: 500px;
+    overflow: scroll;
+}
+#submit{
+    width: 100px;
+    height: 35px;
+    background: #666;
+    color:white;
+    border: 0;
+}
+#question{
+    width: 200px;
+    height: 35px;
+    color:#666;
+    border: 0;
+    padding: 0;
+    background: lightyellow;
+}
+.input_center{
+    margin-bottom: 20px;
+}

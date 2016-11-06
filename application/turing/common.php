@@ -13,7 +13,9 @@
  */
 function turingGet($message, $location)
 {
-    session_start();
+    if(!$_SESSION){
+//        session_start();
+    }
     $config = config("turing");
     $data = ["key" => $config["apikey"], "info" => $message, "loc" => $location, "userid" => session_id()];
     $dataString = json_encode($data);
@@ -38,4 +40,10 @@ function ip2location($ip){
         $locastr = "";
     }
     return $locastr;
+}
+
+function startWith($str, $needle) {
+
+    return strpos($str, $needle) === 0;
+
 }

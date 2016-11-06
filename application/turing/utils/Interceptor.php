@@ -9,5 +9,16 @@ namespace app\turing\utils;
  */
 class Interceptor
 {
-    protected $filters = [];
+    protected $filters = ['\app\turing\utils\PoemFilter', '\app\turing\utils\DicFilter', '\app\turing\utils\FanyiFilter'];
+
+    public function filter($question){
+        foreach($this->filters as $filter){
+            $f = new $filter();
+            $response = $f->doFilter($question);
+            if($response){
+                return $response;
+            }
+        }
+    }
+
 }
